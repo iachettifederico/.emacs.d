@@ -1639,6 +1639,18 @@ Make backups of files, even when they're in version control
   (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
 #+end_src
 
+* String inflections
+
+#+begin_src emacs-lisp
+  (use-package string-inflection :ensure t)
+#+end_src
+
+** Global keybindings
+
+#+begin_src ruby
+  (global-set-key (kbd "H-o") 'string-inflection-all-cycle)
+#+end_src
+
 * File extensions
 
 #+begin_src emacs-lisp
