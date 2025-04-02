@@ -1,6 +1,6 @@
 #+TITLE: Emacs configuration
 
-#+STARTUP: overview
+#+STARTUP: showall
 
 * Auto update packages
 
