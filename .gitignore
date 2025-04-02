@@ -12,3 +12,5 @@
 .lsp-session-v1
 /.org-id-locations
 /tramp
+/.last-package-update-day
+/backup-files/

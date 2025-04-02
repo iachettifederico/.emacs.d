@@ -82,29 +82,6 @@ Reload file with =<f5>=
   (global-set-key (kbd "<f5>") 'revert-buffer)
 #+end_src
 
-** Word and line wrap
-
-#+begin_src emacs-lisp
-  (setq-default truncate-lines t)
-  (setq-default toggle-truncate-lines t)
-  (global-visual-line-mode t)
-  (setq-default word-wrap t)
-#+end_src
-
-*** Add a before hook to fix =C-e= on multiple lines
-
-If I don't add this, whenever I have a line that visually extends onto two or three lines, going to the beginning or end of the line goes to the beginning or end of the visual line instead of the actual line, which is annoying
-
-#+begin_src emacs-lisp
-  (defun fdx/before-open-file-hook ()
-    "Function to run before opening any file."
-    (toggle-truncate-lines t)
-    (toggle-truncate-lines nil)
-    )
-
-  (add-hook 'find-file-hook 'fdx/before-open-file-hook)
-#+end_src
-
 * Interface tweaks
 
 #+begin_src emacs-lisp
@@ -1250,7 +1227,7 @@ Make backups of files, even when they're in version control
     (rvm-use-default))
 #+end_src
 
-** Seeing is besieving
+** Seeing is believing
 
 #+begin_src emacs-lisp
   (use-package seeing-is-believing :ensure t)
@@ -1281,11 +1258,8 @@ Make backups of files, even when they're in version control
   (electric-pair-mode t)
 #+end_src
 
-** inf-ruby
 
 #+begin_src emacs-lisp
-  (use-package inf-ruby :ensure t)
-  (add-hook 'after-init-hook 'inf-ruby-switch-setup)
 #+end_src
 
 ** Ruby Runner Mode
@@ -1338,7 +1312,7 @@ Make backups of files, even when they're in version control
 
   (which-key-add-key-based-replacements "H-i u" "Rubocop")
   (rr/global-set-key "H-i u a" "bundle exec rubocop")
-  (rr/global-set-key "H-i u A" "bundle exec rubocop --autocorrect; bundle exec rubocop")
+  (rr/global-set-key "H-i u A" "bundle exec rubocop --autocorrect-all; bundle exec rubocop")
   (rr/global-set-key "H-i u T" "bundle exec rubocop --regenerate-todo")
   (global-set-key (kbd "H-i u c") (lambda ()(interactive) (compile "ruboclean")))
   (which-key-add-key-based-replacements "H-i u c" "Ruboclean")
@@ -1361,17 +1335,6 @@ Make backups of files, even when they're in version control
 
 #+begin_src emacs-lisp
   (use-package web-mode :ensure t)
-#+end_src
-
-** Local keybindings
-
-#+begin_src emacs-lisp
-  (with-eval-after-load "web-mode"
-    (define-key web-mode-map (kbd "H-=") (lambda ()
-                                           (interactive)
-                                           (fdx/reindent-buffer)
-                                           (fdx/run-erblint-autocorrect-on-current-file)))
-    )
 #+end_src
 
 * rhtml-mode
