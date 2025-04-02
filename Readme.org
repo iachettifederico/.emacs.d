@@ -751,7 +751,7 @@ Installation
 Configuration
 
 #+begin_src emacs-lisp
-  (setenv "ORG_ROAM_DIR" "/data/second-brain")
+  (setenv "ORG_ROAM_DIR" "/home/fedex/second-brain")
   (setq org-roam-directory (file-truename (getenv "ORG_ROAM_DIR")))
   (org-roam-db-autosync-mode)
 #+end_src
