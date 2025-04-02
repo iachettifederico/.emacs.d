@@ -1258,8 +1258,20 @@ Make backups of files, even when they're in version control
   (electric-pair-mode t)
 #+end_src
 
+** Ruby refactor
 
 #+begin_src emacs-lisp
+  (use-package ruby-refactor
+    :ensure t
+    :hook (ruby-ts-mode . ruby-refactor-mode-launch)
+    )
+
+  ;; (eval-after-load 'ruby-refactor
+  ;;   '(progn
+  ;;      (define-key ruby-refactor-mode-map (kbd "C-c r e") 'ruby-refactor-extract-to-method)
+  ;;      (define-key ruby-refactor-mode-map (kbd "C-c r l") 'ruby-refactor-extract-to-let)
+  ;;      (define-key ruby-refactor-mode-map (kbd "C-c r v") 'ruby-refactor-extract-local-variable)
+  ;;      (define-key ruby-refactor-mode-map (kbd "C-c r c") 'ruby-refactor-convert-post-conditional)))
 #+end_src
 
 ** Ruby Runner Mode
